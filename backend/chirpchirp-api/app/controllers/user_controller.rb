@@ -48,9 +48,10 @@ class UsersController < ApplicationController
     #delete user from database
     delete '/users/:username' do
         user1 = User.find(params[:userId])
-        user1.posts.destroy
-        user1.comments.destroy
-        user1.flock.destroy
+        Posts.find_by(user_id: user1.id).destroy
+        Comments.find_by(user_id: user1.id).destroy
+        Flock.find_by(flocker_id: user1.id).destroy
+        Flock.find_by(flockee_id: user1.id).destroy
         user1.destroy
     end
 
