@@ -12,7 +12,7 @@ export default function Explore() {
   }
 
   const [formData, setFormData] = useState(initialFormData);
-
+  
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   }
