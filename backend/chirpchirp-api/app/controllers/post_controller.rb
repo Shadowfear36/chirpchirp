@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     patch '/posts/:post_id' do
         post1 = Post.find(params[:post_id])
         post1.update_attributes(likes: params[:likes])
+        post1.to_json
     end
     
     #get a posts comments
@@ -27,6 +28,13 @@ class PostsController < ApplicationController
        post1 = Post.find(params[:post_id])
        post1.comments.to_json
     end
+
+    #post a new comment
+    post '/posts/:post_id/comments/add' do
+        post1 = Post.find(params[:post_id])
+        Comment.create(content: params[:comment], likes: params[:likes], user_id: params[:user_id], post_id: post1.id)
+        post1.comments.to_json
+     end
 
     #get all comments
     get '/comments' do
