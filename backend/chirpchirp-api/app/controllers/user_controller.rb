@@ -64,12 +64,13 @@ class UsersController < ApplicationController
     #grab a users posts
     get '/user/:username/posts' do
         user1 = User.find_by_username(params[:username])
-        user1.posts.to_json
+        user1.posts.order("created_at DESC").to_json
     end
     # create a users post
-    post '/user/:username/posts' do
+    post '/user/:username/posts/new' do
         user1 = User.find_by_username(params[:username])
-       Post.create(content: params[:content], likes: 0, user_id: user1.id, username: user1.username, pfpURL: user1.pfpURL)
+        Post.create(content: params[:content], likes: 0, user_id: user1.id, username: user1.username, pfpURL: user1.pfpURL)
+        user1.posts.order("created_at DESC").to_json
     end
 
     #grab users followers
