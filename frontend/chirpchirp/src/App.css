@@ -5,6 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');
 
+
 #root {
   margin-top: 0px;
   height: 100vh;
@@ -19,7 +20,7 @@ body {
 }
 body, html { font-size: 100%; padding: 0; margin: 0;}
 
-button {
+/* button {
   color: white;
   background-color: #5C87BC;
   border-radius: 30px;
@@ -29,10 +30,10 @@ button {
   padding-right: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
-}
+} */
 
 /* Form Styles */
-input[type="text"] {
+/* input[type="text"] {
   padding: 10px;
   font-size: 18px;
   margin-bottom: 5px;
@@ -42,18 +43,18 @@ input[type="text"] {
   display: block;
 }
 
-button[type="submit"] {
+/* button[type="submit"] {
   margin-top: 10px;
   justify-self: center;
   align-self: center;
-}
+} */
 
-form {
+/* form {
   display: inline-block;
   justify-self: center;
   align-content: center;
   width: 250px;
-}
+} */
 
 /* Header */
 .header-container {
@@ -61,12 +62,12 @@ form {
   background-color: #5ADDC8;
   display: grid;
   height: 7vh;
-}
+} 
 .header-container > * {
   grid-column-start: 1;
   grid-row-start: 1;
 }
-.header-container> *:last-child {
+ .header-container> *:last-child {
   justify-self: right;
   align-self: center;
 }
@@ -95,7 +96,7 @@ form {
   justify-content: center;
   
 }
-
+/* 
 #login-page-container {
   height: 100vh;
   display: grid;
@@ -113,5 +114,5 @@ form {
 #login-form-container {
   align-self: center;
   justify-self: center;
-}
+}  */
 

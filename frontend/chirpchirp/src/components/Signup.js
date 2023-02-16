@@ -83,15 +83,15 @@ export default function SignUp() {
     <div>
         <Header/>
         <h1 class="font-proza-libre text-6xl font-bold text-center text-purple p-4">"Birds Of A Feather Flock Together"</h1>
-        <h1 class="font-proza-libre text-5xl font-bold text-center text-purple p-4">Fill Out The Form To Sign Up:</h1>
-        <div class="font-proza-libre text-purple ml-4">
+        <h1 class="font-proza-libre text-4xl font-bold text-center text-purple p-4">Fill Out The Form To Sign Up:</h1>
+        <div class="font-proza-libre text-purple flex flex-col items-center justify-center">
           <form onSubmit={handleSubmit}>
             <input
               onChange={handleChange}
               name="name" type="text"
               placeholder="Full Name"
               value={formData.name}
-              class="rounded mx-1 m-5 bg-green"
+              class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
             />
             <input
               onChange={handleChange}
@@ -99,7 +99,7 @@ export default function SignUp() {
               type="text"
               placeholder="Username"
               value={formData.username}
-              class="rounded mx-1 m-5 bg-green"
+              class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
             />
             <input
               onChange={handleChange}
@@ -107,7 +107,7 @@ export default function SignUp() {
               type="text"
               placeholder="Email"
               value={formData.email}
-              class="rounded mx-1 m-5 bg-green"
+              class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
             />
             <input
               onChange={handleChange}
@@ -115,7 +115,7 @@ export default function SignUp() {
               type="password"
               placeholder="Password"
               value={formData.password}
-              class="rounded p-3 mx-1 mr-4 bg-green w-56 h-15 m-5 text-center text-lg"
+              class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
             />
             <input
               onChange={handleChange}
@@ -123,13 +123,15 @@ export default function SignUp() {
               type="password"
               placeholder="Confirm Password"
               value={formData.password2}
-              class="rounded p-3 mx-1 mr-4 bg-green w-56 h-15 text-center text-lg"
+              class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
             />
-            <button
-              type="submit"
-              class="text-purple  hover:text-green text-4xl font-bold p-5"
-              >Sign Up
-            </button>
+            <div class="flex flex-col items-center">
+              <button
+                type="submit"
+                class="bg-purple hover:bg-green text-white font-bold py-2 px-6 rounded-full text-lg"
+                >Sign Up
+              </button>
+            </div>
           </form>
         </div>
     </div>

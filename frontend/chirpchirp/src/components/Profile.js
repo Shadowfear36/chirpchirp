@@ -57,46 +57,52 @@ export default function Profile() {
 
   return (
     // is user logged in?
-    globalState.isLoggedIn? 
+    globalState.isLoggedIn?
     <>
       {/* logged in  */}
       <Header />
       <Nav/>
-      <img src={globalState.pfp}/> <img src={"bannerImage"}/>
-      <h6 class="font-proza-libre text-right break-normal">Logged In as {globalState.username}</h6>
-      <div class="font-proza-libre text-purple ml-40">
-      <h1 class="font-proza-libre text-6xl font-bold text-center text-purple p-4 ml-40">Create Chirp</h1>
-      <div class="font-proza-libre text-purple ml-60">
-      <form onSubmit={handleSubmit}>
-        <input
-          name="content"
-          onChange={handleChange}
-          type="textarea"
-          id="chirp"
-          placeholder="Add chirp content"
-          class="h-32 w-96 rounded text-center m-5 mx-1 text-2xl bg-green"
-        />
+
+      <div class="font-proza-libre text-6xl font-bold text-center text-purple p-4">
+        <h1>Create a Chirp</h1>
+      </div>
+
+      <div class="font-proza-libre text-purple">
+        <form onSubmit={handleSubmit}>
+            <input
+              name="content"
+              onChange={handleChange}
+              type="textarea"
+              id="chirp"
+              placeholder=" Add chirp content"
+              class="h-32 w-96 rounded m-5 mx-1 text-xl bg-green border border-purple"
+            />
+        </form>
+      </div>
+
+      <div class="font font-proza-libre flex flex-col items-center">
         <button
           type="submit"
           id="submitChirp"
-          class="text-purple hover:text-green text-2xl font-bold m-5"
-        >Chirp</button>
-      </form>
+          class="bg-purple hover:bg-green text-white font-bold py-2 px-6 rounded-full text-lg"
+          >Chirp
+        </button>
       </div>
-      <ChirpList
-      list={list}
-      />
-    </div>
-    </> : 
+
+      <div class="flex flex-wrap justify-center p-4">
+        <ChirpList
+          list={list}
+        />
+      </div>
+
+    </> :
     <>
       {/* not logged in */}
-     <Header />
-     <Nav/>
-     <img src={globalState.pfp}/> <img src={"bannerImage"}/>
-     <h6>You are not logged in</h6>
-     <p>Please Login</p>
+      <Header />
+      <Nav/>
+      <img src={globalState.pfp}/> <img src={"bannerImage"}/>
+      <h6>You are not logged in</h6>
+      <p>Please Login</p>
     </>
-
-    
   )
 }

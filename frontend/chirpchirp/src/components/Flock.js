@@ -18,7 +18,7 @@ export default function Flock() {
         <Header/>
         <Nav/>
       </div>
-      <div class="font-proza-libre text-purple ml-40">
+      <div class="font-proza-libre text-purple">
         <h1 class="text-5xl font-bold py-4">Flock</h1>
         <div class="flex justify-center">
           <div class="mb-3 xl:w-96">
@@ -28,9 +28,12 @@ export default function Flock() {
                   type="search"
                   id="addToFlock"
                   placeholder="Search For Chirpers"
-                  class="rounded p-3 mx-1 mr-4 bg-green w-80 h-15 text-center text-lg text-purple"
+                  class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
               />
-              <button>Search</button>
+              <button
+                class="bg-purple hover:bg-green text-white font-bold py-2 px-6 rounded-full text-lg m-2"
+                >Search
+              </button>
             </form>
           </div>
         </div>

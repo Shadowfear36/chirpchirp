@@ -54,11 +54,11 @@ export default function Login() {
   }
 
   return (
-    <div id="login-page-container">
+    <div>
         <Header/>
         <div id="login-form-container">
-          <h1 class="font-proza-libre text-6xl font-bold text-center text-purple p-4">Login Here:</h1>
-          <div class="font-proza-libre text-purple ml-4">
+          <h1 class="font-proza-libre text-6xl font-bold text-center text-purple p-4">Login:</h1>
+          <div class="font-proza-libre text-purple flex flex-col items-center justify-center">
             <form onSubmit={handleSubmit}>
               <input
                 onChange={handleChange}
@@ -66,23 +66,25 @@ export default function Login() {
                 type="text"
                 placeholder="Username"
                 value={formData.email}
-                class="rounded p-3 mx-1 mr-4 bg-blue h-15 m-6 text-center"
+                // class="rounded p-3 mx-1 mr-4 bg-green h-15 m-6 text-center"
+                class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
               />
-              <div>
                 <input
                   onChange={handleChange}
                   name="password"
                   type="password"
                   placeholder="Password"
                   value={formData.password}
-                  class="rounded p-3 mx-1 mr-4 bg-blue w-56 h-15 m-5 text-center text-lg"
+                  // class="rounded p-3 mx-1 mr-4 bg-green w-56 h-15 m-5 text-center text-lg"
+                  class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
                 />
+              <div class="flex flex-col items-center">
+                <button
+                  type="submit"
+                  class="bg-purple hover:bg-green text-white font-bold py-2 px-6 rounded-full text-lg m-5"
+                  >Login
+                </button>
               </div>
-              <button
-                type="submit"
-                class="text-purple  hover:text-blue text-4xl font-bold p-5"
-                >Login
-              </button>
             </form>
           </div>
         </div>

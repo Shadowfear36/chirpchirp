@@ -19,10 +19,10 @@ export default function Nest() {
           <Header/>
           <Nav/>
         </div>
-        <div class="font-proza-libre text-purple ml-40">
+        <div class="font-proza-libre text-purple">
           <h1 class="text-5xl font-bold p-4">Chirps</h1>
         </div>
-        <div>
+        <div class="flex flex-wrap justify-center p-4">
           <ChirpList list={list}/>
         </div>
     </div>

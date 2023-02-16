@@ -11,11 +11,11 @@ import Settings from './components/Settings.js';
 import ChirpPage from './components/ChirpPage.js';
 import { GlobalProvider } from './context/user.js';
 
-
 function App() {
 
+
   return (
-    <div className="App">
+    <div className="App" >
       <GlobalProvider>
         <Routes>
           <Route 

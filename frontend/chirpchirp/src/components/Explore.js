@@ -13,14 +13,13 @@ export default function Explore() {
     .then(obj => setList(obj))
   },[])
 
-
   return (
     <div>
       <div>
         <Header/>
         <Nav/>
       </div>
-      <div class="font-proza-libre text-purple ml-40">
+      <div class="font-proza-libre text-purple">
         <h1 class="text-5xl font-bold p-4">Explore</h1>
         <div class="flex justify-center">
           <div class="mb-3 xl:w-96">
@@ -30,14 +29,17 @@ export default function Explore() {
                   type="search"
                   id="searchChirp"
                   placeholder="Search for Chirps"
-                  class="rounded p-3 mx-1 mr-4 bg-green w-80 h-15 text-center text-lg text-purple"
+                  class="w-full mr-3 py-5 px-4 h-2 border border-purple rounded mb-2 bg-green"
               />
-              <button>Search</button>
+              <button
+                class="bg-purple hover:bg-green text-white font-bold py-2 px-6 rounded-full text-lg m-2"
+                >Search
+              </button>
             </form>
           </div>
         </div>
       </div>
-      <div>
+      <div class="flex flex-wrap justify-center p-4">
         {/* display chirps */}
         <ChirpList list={list}/>
       </div>
