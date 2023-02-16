@@ -19,7 +19,9 @@ export default function Explore() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:9292/posts/search/${formData.search}`)
+    fetch(`http://localhost:9292/posts/search/${formData.search}`,
+    
+    )
     .then((res) => res.json())
     .then((obj) => setList(obj))
   }

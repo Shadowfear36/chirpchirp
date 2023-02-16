@@ -31,19 +31,16 @@ export default function Profile() {
 
   //handle chirp form submit
   const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch(`http://localhost:9292/user/${globalState.username}/posts`, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(formData)
-    }).then(res => res.json())
-    .then(obj => {
-      let newList = list.shift(obj)
-      setList(newList)
-    });
+    e.preventDefault()
+    fetch(`http://localhost:9292/user/${globalState.username}/posts/new`,
+    { headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(formData)
+  })
+    .then(res => res.json())
+    .then(obj => setList(obj))
   }
 
   //fetch users posts to pass to ChirpList
@@ -66,18 +63,17 @@ export default function Profile() {
       <div class="font-proza-libre text-6xl font-bold text-center text-purple p-4">
         <h1>Create a Chirp</h1>
       </div>
-
+      <form onSubmit={handleSubmit}>
       <div class="font-proza-libre text-purple">
-        <form onSubmit={handleSubmit}>
             <input
               name="content"
+              value={formData.content}
               onChange={handleChange}
               type="textarea"
               id="chirp"
               placeholder=" Add chirp content"
               class="h-32 w-96 rounded m-5 mx-1 text-xl bg-green border border-purple"
             />
-        </form>
       </div>
 
       <div class="font font-proza-libre flex flex-col items-center">
@@ -88,6 +84,8 @@ export default function Profile() {
           >Chirp
         </button>
       </div>
+      </form>
+
 
       <div class="flex flex-wrap justify-center p-4">
         <ChirpList
