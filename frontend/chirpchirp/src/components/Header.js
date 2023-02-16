@@ -15,7 +15,7 @@ export default function Header() {
       } else if (globalState.page === "signup") {
         return <div id="header-btn-wrapper"><NavLink to= "/"><button className="headerBtn" class="m-5 text-2xl">Login</button></NavLink></div>
       } else if (globalState.isLoggedIn === true) {
-        return <div id="header-img-wrapper"><NavLink to={profileLink}><img className="headerImg" class="justify-end" src={globalState.pfp}/></NavLink></div>
+        return <div id="header-img-wrapper"><NavLink to={profileLink}><img className="headerImg" class="justify-end" src={globalState.pfp}/></NavLink><p>{globalState.name}</p></div>
       } else {
        return <div>
                 <NavLink to= "/signup">
@@ -35,7 +35,7 @@ export default function Header() {
       </div>
        <div id="right-header-container">
         {checkPage()}
-      </div>
+       </div>
     </div>
   )
 }

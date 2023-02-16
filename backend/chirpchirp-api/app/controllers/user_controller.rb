@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     # create a users post
     post '/user/:username/posts' do
         user1 = User.find_by_username(params[:username])
-       Post.create(content: params[:content], likes: 0, user_id: user1.id)
+       Post.create(content: params[:content], likes: 0, user_id: user1.id, username: user1.username, pfpURL: user1.pfpURL)
     end
 
     #grab users followers
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
     get '/user/:username/flock/posts' do
         user1 = User.find_by_username(params[:username])
         flock = user1.flockees
-        output = []
+        output = [user1.posts]
         flock.each do |user|
             output << user.posts
         end

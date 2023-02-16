@@ -8,6 +8,7 @@ import Chirp from './components/Chirp.js';
 import Explore from './components/Explore.js';
 import Profile from './components/Profile.js';
 import Settings from './components/Settings.js';
+import ChirpPage from './components/ChirpPage.js';
 import { GlobalProvider } from './context/user.js';
 
 
@@ -51,6 +52,10 @@ function App() {
           <Route 
             path="/:userName" 
             element={<Profile/>}
+          />
+          <Route
+            path="/chirp/:chirpId"
+            element={<ChirpPage/>}
           />
         </Routes>
       </GlobalProvider>

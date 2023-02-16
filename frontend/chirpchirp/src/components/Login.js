@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect } from 'react'
+import { React, useContext, useState } from 'react'
 import { GlobalContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 import Header from './Header.js';
@@ -33,7 +33,7 @@ export default function Login() {
     e.preventDefault();
 
     //fetch users from database by username inputed
-    fetch(`http://localhost:9292/${formData.username}`)
+    fetch(`http://localhost:9292/user/${formData.username}`)
     .then(res => res.json())
     .then(userData => {
       if (userData === null) {

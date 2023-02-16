@@ -1,23 +1,41 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import Header from './Header';
-import Nav from './Nav';
 
 
-export default function Chirp() {
-  const { userName, chirpId } = useParams(); 
+export default function Chirp({content, likes, userId, createdAt, username, pfp, chirpId}) {
+  const handleLike = (e) => {
+    e.preventDefault();
+    let newlikes = likes + 1;
+    fetch(`http://localhost:9292/posts/${chirpId}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        "likes": newlikes
+      })
+    })
+    .then(res => res.json())
+    .then(obj => likes = obj.likes)
+  }
+
+  const handleComment = (e) => {
+    e.preventDefault();
+    //pop up a form to make a comment
+    //post comment to database
+  }
 
   return (
     <div>
-      <div>
-        <Header/>
-        <Nav/>
-      </div>
+      <p>{createdAt}</p>
       <div>
         {/* Individual Chirp */}
-        <p>Date & Time</p>
-        <p>Posted By: {userName}</p>
-        <p>ChirpId: {chirpId} </p>
+        <img src={pfp}/>
+        <p>User: {username}</p>
+
+        <p>{content}</p>
+        <p>Likes: {likes}</p>
+        <button onClick={handleLike}>Like</button>
+        <button onClick={handleComment}>Comment</button>
       </div>
     </div>
   )

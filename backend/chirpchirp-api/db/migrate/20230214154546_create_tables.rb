@@ -15,6 +15,8 @@ class CreateTables < ActiveRecord::Migration[5.2]
       t.string :content
       t.integer :likes
       t.integer :user_id
+      t.string :username
+      t.string :pfpURL
       t.timestamps
     end
 

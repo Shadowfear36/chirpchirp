@@ -32,7 +32,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:9292/${formData.username}`)
+    fetch(`http://localhost:9292/user/${formData.username}`)
     .then(res => res.json())
     .then((userData) => {
       console.log(userData);
@@ -57,8 +57,8 @@ export default function SignUp() {
                 "email": formData.email,
                 "username": formData.username,
                 "password": formData.password,
-                "pfpURL": null,
-                "bannerURL": null
+                "pfpURL": "https://via.placeholder.com/250",
+                "bannerURL": "https://via.placeholder.com/1500x350"
               })
             })
             .then(res => res.json())

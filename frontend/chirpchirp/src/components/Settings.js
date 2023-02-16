@@ -1,19 +1,56 @@
-import React, {useState} from 'react'
+import { React, useState, useContext } from 'react'
 import Nav from './Nav'
 import Header from './Header'
+import { GlobalContext } from "../context/user";
+
 
 export default function Settings() {
-//these are prone to changes when the backend is completed
-  const [profileImage, setProfileImage] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [bannerImage, setBannerImage] = useState('');
-  const [formData, setFormData] = useState('');
+  // initialize Global Context
+  const globalState = useContext(GlobalContext);
+
+  globalState.page = "Settings";
+
+  //initial form state
+  const initialState = {
+    name: "",
+    email: "",
+    username: "",
+    bannerURL: "",
+    password: "",
+    pfpURL: ""
+  }
+  //form state initilization
+  const [formData, setFormData] = useState(initialState);
+  
+   // handle form input Change
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission 
+    fetch(`http://localhost:9292/users/${globalState.username}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        "name": formData.name,
+        "email": formData.email,
+        "password": formData.password,
+        "pfpURL": formData.pfp,
+        "bannerURL": formData.banner
+      })
+    }).then(res => res.json())
+    .then(obj => {
+      globalState.name = obj.name;
+      globalState.email = obj.email;
+      globalState.banner = obj.bannerURL;
+      globalState.pfp = obj.pfpURL;
+      }
+    )
+
 
   };
 
@@ -26,57 +63,61 @@ export default function Settings() {
       </div>
     <div class="font-proza-libre text-purple ml-40">
       <form onSubmit={handleSubmit}>
-        <div>
           <label class="text-xl p-5">Name:</label>
           <input 
-            type="text" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            type="text"
+            placeholder={globalState.name} 
+            value={formData.name} 
+            onChange={handleChange}
             class="rounded mx-1 bg-green text-purple"
           />
-        </div>
-        <div>
           <label class="text-xl p-5">E-mail:</label>
           <input 
+            name="email"
             type="text" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder={globalState.email}
+            value={formData.email} 
+            onChange={handleChange}
             class="rounded mx-1 p-5 bg-green text-purple"
           />
-        </div>
-        <div>
           <label class="text-xl p-5">Password:</label>
           <input 
+            name="password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder='*******'
+            value={formData.password}
+            onChange={handleChange}
             class="rounded p-3 mx-1 mr-4 bg-green w-56 h-15 text-purple"
           />
-        </div>
-        <div>
           <label class="text-xl p-5">Profile Image URL:</label>
           <input 
-            type="text" 
-            value={profileImage} 
-            onChange={(e) => setProfileImage(e.target.value)}
+            name="pfpURL"
+            type="text"
+            placeholder={globalState.pfp}
+            value={formData.pfp} 
+            onChange={handleChange}
             class="rounded mx-1 bg-green text-purple"
           />
-        </div>
-        <div>
           <label class="text-xl p-5">Banner URL:</label>
           <input 
+            name="bannerURL"
             type="text" 
-            value={bannerImage} 
-            onChange={(e) => setBannerImage(e.target.value)}
+            value={formData.banner} 
+            placeholder={globalState.banner}
+            onChange={handleChange}
             class="rounded mx-1 bg-green text-purple"
           />
-        </div>
+
         <button 
           type="submit"
           class="text-purple  hover:text-green text-4xl font-bold text-purple"
-          > Save
+          >Save
         </button>
       </form>
+      
+      {/* handle deleting user account */}
+      <button>Delete Account</button>
     </div>
     </>
   )

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
     #all posts
     get '/posts' do
-        Post.all.to_json
+        Post.all.order("created_at ASC").to_json
     end
 
     #get a post by id
@@ -13,6 +13,13 @@ class PostsController < ApplicationController
     # add a comment to a post
     post '/posts/:post_id' do
         Comment.create(content: params[:content], likes: params[:likes], user_id: params[:user_id], post_id: params[:post_id])
+    end
+
+    #patch a post
+
+    patch '/posts/:post_id' do
+        post1 = Post.find(params[:post_id])
+        post1.update_attributes(likes: params[:likes])
     end
     
     #get a posts comments

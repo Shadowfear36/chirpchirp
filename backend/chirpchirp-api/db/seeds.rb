@@ -18,18 +18,18 @@ U4 = User.create(name: "Walt", username: "jackjack", email: "Walt@gmail.com", pa
 # Posts
 puts "Creating Posts..."
 
-P1 = Post.create(content: "This is a post", likes: 10, user_id: U1.id)
+P1 = Post.create(content: "This is a post", likes: 10, user_id: U1.id, username: U1.username, pfpURL: U1.pfpURL)
 
-P2 = Post.create(content: "This is not a post", likes: 3, user_id: U2.id)
+P2 = Post.create(content: "This is not a post", likes: 3, user_id: U2.id, username: U2.username, pfpURL: U2.pfpURL)
 
-P3 = Post.create(content: "This is my first post", likes: 7, user_id: U2.id)
+P3 = Post.create(content: "This is my first post", likes: 7, user_id: U2.id, username: U2.username, pfpURL: U2.pfpURL)
 
 
-P4 = Post.create(content: "This is my first post", likes: 100, user_id: U3.id)
+P4 = Post.create(content: "This is my first post", likes: 100, user_id: U3.id, username: U3.username, pfpURL: U3.pfpURL)
 
-P5 = Post.create(content: "This is my post", likes: 1, user_id: U4.id)
+P5 = Post.create(content: "This is my post", likes: 1, user_id: U4.id, username: U4.username, pfpURL: U4.pfpURL)
 
-P6 = Post.create(content: "This is my next post", likes: 4, user_id: U4.id)
+P6 = Post.create(content: "This is my next post", likes: 4, user_id: U4.id, username: U4.username, pfpURL: U4.pfpURL)
 
 
 # comments 

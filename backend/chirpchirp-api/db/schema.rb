@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2023_02_14_154546) do
     t.string "content"
     t.integer "likes"
     t.integer "user_id"
+    t.string "username"
+    t.string "pfpURL"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
