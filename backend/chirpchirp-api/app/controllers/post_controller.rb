@@ -37,4 +37,11 @@ class PostsController < ApplicationController
     get '/trending' do
         Post.all.order('likes DESC').to_json
     end
+    #get posts by search term (fuzzy search)
+    get '/posts/search/:searchterm' do
+        search = params[:searchterm]
+        Post.where("content like ?", '%' + search + '%').order('created_at DESC').to_json
+    end
+
 end
+

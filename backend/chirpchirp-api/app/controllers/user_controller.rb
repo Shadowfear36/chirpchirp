@@ -48,9 +48,10 @@ class UsersController < ApplicationController
     #delete user from database
     delete '/users/:username' do
         user1 = User.find(params[:userId])
-        user1.posts.destroy
-        user1.comments.destroy
-        user1.flock.destroy
+        Posts.find_by(user_id: user1.id).destroy
+        Comments.find_by(user_id: user1.id).destroy
+        Flock.find_by(flocker_id: user1.id).destroy
+        Flock.find_by(flockee_id: user1.id).destroy
         user1.destroy
     end
 
@@ -100,5 +101,17 @@ class UsersController < ApplicationController
     get '/user/:username/comments' do
         user1 = User.find_by_username(params[:username])
         user1.comments.to_json
+    end
+    # creates a friendship to another user
+    post '/flock/:current_user/add/:add_user' do
+        user1 = User.find_by_username(params[:current_user])
+        user2 = User.find_by_username(params[:add_user])
+        Flock.create(flocker_id: user1.id, flockee_id: user2.id).to_json
+    end
+    # deletes a friendship between two users
+    post '/flock/:current_user/remove/:remove_user' do
+        user1 = User.find_by_username(params[:current_user])
+        user2 = User.find_by_username(params[:remove_user])
+       Flock.find_by(flocker_id: user1.id, flockee_id: user2.id).destroy
     end
 end
