@@ -12,6 +12,8 @@ export default function Flock() {
   // initialize Global Context
   const globalState = useContext(GlobalContext);
 
+  globalState.page = "Flock";
+
   //allow for navigation
   const navigate = useNavigate();
 
