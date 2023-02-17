@@ -3,6 +3,7 @@ import Nav from './Nav'
 import Header from './Header'
 import ChirpList from './ChirpList'
 import { GlobalContext } from '../context/user.js'
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,8 +12,12 @@ export default function Flock() {
   // initialize Global Context
   const globalState = useContext(GlobalContext);
 
+  //allow for navigation
+  const navigate = useNavigate();
+
   //state of chirp list
   const [list, setList] = useState([]);
+
   //initial form state
   const initialState = {
     search: ""
@@ -22,10 +27,15 @@ export default function Flock() {
 
   //fetch friends posts and your posts
   useEffect(() => {
+
     fetch(`http://localhost:9292/user/${globalState.username}/flock/posts`)
     .then(res => res.json())
-    .then(data => console.log(data))
-  })
+    .then(
+      data => {
+        setList(data.flat())
+      }
+    )
+  },[])
 
     // handle form input Change
     const handleChange = (e) => {
@@ -34,6 +44,7 @@ export default function Flock() {
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      navigate(`/${formData.search}`)
     }
 
   return (
@@ -66,7 +77,10 @@ export default function Flock() {
         </div>
       </div>
       <div>
+        <p>Your Flocks Posts</p>
+      <div class="flex flex-wrap justify-center p-4">
         <ChirpList list={list}/>
+      </div>
       </div>
     </div>
   )
