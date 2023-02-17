@@ -39,8 +39,8 @@ export default function Settings() {
         "name": formData.name,
         "email": formData.email,
         "password": formData.password,
-        "pfpURL": formData.pfp,
-        "bannerURL": formData.banner
+        "pfpURL": formData.pfpURL,
+        "bannerURL": formData.bannerURL
       })
     }).then(res => res.json())
     .then(obj => {

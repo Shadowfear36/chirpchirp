@@ -83,7 +83,7 @@ const handleLike = (e) => {
         />
         </NavLink>
       </div>
-      <div>
+      <div class="bg-blue rounded p-4">
         <p>{content}</p>
       </div>
       <div>
@@ -116,7 +116,13 @@ const handleLike = (e) => {
           {/* add comment form */}
           {showAddComment? 
           <form onSubmit={handleCommentSubmit}>
-            <input name="comment" type="text" value={formData.comment} onChange={handleChange}/>
+            <input 
+              name="comment" 
+              type="text" 
+              value={formData.comment} 
+              onChange={handleChange}
+              class="p-4 bg-blue rounded"
+            />
             <button
             type="submit"
             class="bg-purple hover:bg-blue text-white font-bold py-2 px-3  rounded-full text-md m-2 p-4"

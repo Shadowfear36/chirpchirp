@@ -37,19 +37,23 @@ export default function ChirpPage() {
 
   return (
   <div>
-   <div>
+    <div>
         <Header/>
         <Nav/>
     </div>
-    <div>
+    <h1 class="font-proza-libre form-label inline-block mb-5 text-3xl max-w-md text-purple p-4">Chirp</h1>
+    <div class="flex flex-wrap justify-center p-4">
       <Chirp content={chirp.content} likes={chirp.likes} createdAt={chirp.created_at} username={chirp.username} pfp={chirp.pfpURL} chirpId={chirp.id}/>
     </div>
     <br/>
-    <p>|</p>
-    <p>|</p>
     <br/>
-    <p>Chirp Comments</p>
+    <div>
+    <p class="font-proza-libre form-label inline-block mb-5 text-3xl max-w-md text-purple">Chirp Comments</p>
+    </div>
+    <div class="flex flex-wrap justify-center p-4">
     <ChirpList list={list}/>
+    </div>
   </div>
+  
   )
 }

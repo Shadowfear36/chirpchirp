@@ -135,7 +135,7 @@ export default function Profile() {
       <div>
 
         {/* banner image  */}
-        <img src={displayedUser.pfpURL}></img>
+        <img src={displayedUser.bannerURL}></img>
 
         {/* add to flock conditional */}
         {showAddToFlock? <>

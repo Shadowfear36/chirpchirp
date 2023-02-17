@@ -77,7 +77,7 @@ export default function Flock() {
         </div>
       </div>
       <div>
-        <p>Your Flocks Posts</p>
+        <p class="font-proza-libre text-purple text-lg">Your Flocks Posts</p>
       <div class="flex flex-wrap justify-center p-4">
         <ChirpList list={list}/>
       </div>
