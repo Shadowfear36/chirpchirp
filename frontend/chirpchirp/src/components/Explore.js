@@ -12,14 +12,16 @@ export default function Explore() {
   }
 
   const [formData, setFormData] = useState(initialFormData);
-
+  
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:9292/posts/search/${formData.search}`)
+    fetch(`http://localhost:9292/posts/search/${formData.search}`,
+    
+    )
     .then((res) => res.json())
     .then((obj) => setList(obj))
   }
