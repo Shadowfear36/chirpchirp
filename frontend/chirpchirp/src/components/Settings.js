@@ -2,13 +2,19 @@ import { React, useState, useContext } from 'react'
 import Nav from './Nav'
 import Header from './Header'
 import { GlobalContext } from "../context/user";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Settings() {
   // initialize Global Context
   const globalState = useContext(GlobalContext);
 
+  //set state of page globally
   globalState.page = "Settings";
+
+
+  //allow for navigation
+  const navigate = useNavigate();
 
   //initial form state
   const initialState = {
@@ -50,9 +56,24 @@ export default function Settings() {
       globalState.pfp = obj.pfpURL;
       }
     )
+  }
 
+    // handle delete of user
+    
+  const handleDelete = (e) => {
+    fetch(`http://localhost:9292/users/${globalState.username}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((obj) => {
+        console.log(obj);
+    })
+    navigate(`/signup`)
+  }
 
-  };
 
   return (
     <>
@@ -136,6 +157,7 @@ export default function Settings() {
 
       <div>
         <button
+          onClick={handleDelete()}
           class="bg-purple hover:bg-green text-white font-bold py-2 px-6 rounded-full text-lg"
           >Delete Account
         </button>
