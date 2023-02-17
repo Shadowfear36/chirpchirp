@@ -10,28 +10,31 @@ import { useParams } from "react-router-dom";
 export default function ChirpPage() {
 
   //pull params information from url
-  let {chirpId} = useParams();
+  const { chirpId } = useParams();
 
   // initialize Global Context
   const globalState = useContext(GlobalContext);
-  
+
   // chirp at hand state
   const [chirp, setChirp] = useState([])
 
   //chirp comments list
   const [list, setList] = useState([])
 
+  // fetch post
   useEffect(() => {
     fetch(`http://localhost:9292/posts/${chirpId}`)
     .then(res => res.json())
     .then(obj => setChirp(obj))
   },[]);
 
+  // fetch posts comments
   useEffect(() => {
     fetch(`http://localhost:9292/posts/${chirpId}/comments`)
     .then(res => res.json())
     .then(obj => setList(obj))
   },[]);
+
   return (
   <div>
    <div>

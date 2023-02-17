@@ -57,6 +57,7 @@ function App() {
             path="/chirp/:chirpId"
             element={<ChirpPage/>}
           />
+          
         </Routes>
       </GlobalProvider>
     </div>
