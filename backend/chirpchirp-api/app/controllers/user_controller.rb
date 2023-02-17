@@ -103,6 +103,23 @@ class UsersController < ApplicationController
         user1 = User.find_by_username(params[:username])
         user1.comments.to_json
     end
+
+     # checks whether they are friends already or not return boolean
+    get '/flock/:current_user/add/:add_user' do
+        begin
+        user1 = User.find_by_username(params[:current_user])
+        user2 = User.find_by_username(params[:add_user])
+        flock = user1.flockees.find(user2.id)
+        if flock === user2
+            value = true
+            value.to_json
+        end
+        rescue
+            value = false
+            value.to_json
+        end
+    end
+
     # creates a friendship to another user
     post '/flock/:current_user/add/:add_user' do
         user1 = User.find_by_username(params[:current_user])

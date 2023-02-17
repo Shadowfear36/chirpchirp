@@ -66,15 +66,22 @@ const handleLike = (e) => {
     })
   };
 
+  // link for specific chirp
   const chirpLink = `/chirp/${chirpId}`
+
+  //link for viewing a user
+  const userLink = `/${username}`
+ 
 
   return (
     <div class="block max-w-sm p-6 border border-purple rounded-lg shadow font-proza-libre text-purple bg-green space-y-5 mb-5">
       <div>
+        <NavLink to={userLink}>
         <img 
           class="h-10"
           src={pfp}
         />
+        </NavLink>
       </div>
       <div>
         <p>{content}</p>
